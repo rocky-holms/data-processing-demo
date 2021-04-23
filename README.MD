@@ -25,3 +25,5 @@
     4. Records are returned in Yaml format and can be downloaded.
     5. A few queries are in place for specific fields (can be added to)
     6. A task ID is sent back when file is uploaded, and the ID can be used to get the status of the job.
+    7. sample_data.csv is included to show the initial test data
+    8. https://www.kaggle.com/teejmahal20/airline-passenger-satisfaction <- link to used dataset
