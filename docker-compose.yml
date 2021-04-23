@@ -1,0 +1,72 @@
+
+version: "3.7"
+
+services:
+  fastapi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      REDISSERVER: redis://redis_server:6379
+      C_FORCE_ROOT: "true"
+      API_KEY: "coneofsilence"
+      MONGO_DB_NAME: 'api'
+      MONGO_DB_HOST: "mongodb://mongodb/data"
+      DATA_TASK_NAME: "process_data.task"
+    links:
+      - mongodb
+    ports:
+      - "8000:80"
+    depends_on:
+      - redis_server
+      - mongodb
+    networks:
+        - backend
+
+  worker:
+    build:
+      dockerfile: DockerfileCelery
+      context: .
+    environment:
+      REDISSERVER: redis://redis_server:6379
+      C_FORCE_ROOT: "true"
+      MONGO_DB_NAME: 'api'
+      MONGO_DB_HOST: "mongodb://mongodb/data"
+    depends_on:
+      - redis_server
+    networks:
+      - backend
+
+  redis_server:
+    image: redis
+    networks:
+      - backend
+
+  flower:
+    image: mher/flower
+    command: ["flower", "--broker=redis://redis_server:6379", "--port=5555"]
+    ports:
+      - "5555:5555"
+    depends_on:
+      - redis_server
+    networks:
+      - backend
+
+  mongodb:
+    image: mongo:4.0.8
+    container_name: mongodb
+    restart: unless-stopped
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodbdata:/data/db
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mongodbdata:
+    driver: local

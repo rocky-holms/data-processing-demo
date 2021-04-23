@@ -1,0 +1,16 @@
+[tool.poetry]
+authors = ["Your Name <you@example.com>"]
+description = "Process batch data."
+name = "data_processing"
+version = "0.1.0"
+
+[tool.poetry.dependencies]
+celery = "^5.0.5"
+mongoengine = "^0.23.0"
+pydantic = "^1.8.1"
+python = "^3.8"
+redis = "^3.5.3"
+
+[build-system]
+build-backend = "poetry.masonry.api"
+requires = ["poetry>=0.12"]

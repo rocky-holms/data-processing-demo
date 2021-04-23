@@ -1,0 +1,28 @@
+import mongoengine as me
+
+
+class Record(me.Document):
+    customer_id = me.IntField(required=True, unique=True)
+    gender = me.StringField()
+    customer_type = me.StringField()
+    age = me.IntField()
+    type_of_travel = me.StringField()
+    flight_class = me.StringField()
+    flight_distance = me.IntField()
+    inflight_wifi_service = me.IntField()
+    departure_and_arrival_time_convenient = me.IntField()
+    ease_of_online_booking = me.IntField()
+    gate_location = me.IntField()
+    food_and_drink = me.IntField()
+    online_boarding = me.IntField()
+    seat_comfort = me.IntField()
+    inflight_entertainment = me.IntField()
+    on_board_service = me.IntField()
+    leg_room_service = me.IntField()
+    baggage_handling = me.IntField()
+    check_in_service = me.IntField()
+    inflight_service = me.IntField()
+    cleanliness = me.IntField()
+    departure_delay_in_minutes = me.FloatField()
+    arrival_delay_in_minutes = me.IntField()
+    satisfaction = me.StringField()

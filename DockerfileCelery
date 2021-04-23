@@ -1,0 +1,15 @@
+FROM python:3.8
+
+LABEL maintainer="Joseph Rocky Holms <joseph.holms@yahoo.com>"
+
+WORKDIR /app
+
+COPY pyproject_celery.toml  /app/pyproject.toml
+
+RUN pip install poetry && \
+    poetry config virtualenvs.create false && \
+    poetry install
+
+COPY . /app/
+
+ENTRYPOINT celery -A src.celery.tasks worker --loglevel=info
