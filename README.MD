@@ -1,7 +1,7 @@
 # Demo project for processing datasets from airline survey datasets
 
 ## Requirements
-1. `docker` installed locally.
+1. `docker` and `docker-compose` installed locally.
 
 ## How to run
 * `docker-compose -f docker-compose.yml up --scale worker=2 --build`
