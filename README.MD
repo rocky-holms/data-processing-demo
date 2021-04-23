@@ -1,20 +1,22 @@
 # Demo project for processing datasets from airline survey datasets
 
 ## Requirements
-    1. `docker` installed locally.
+
+    1. docker installed locally.
 
 ## How to run
-    * `docker-compose -f docker-compose.yml up --scale worker=2 --build`
+
+    * docker-compose -f docker-compose.yml up --scale worker=2 --build
 
 ## Libraries
-    1. `mongoengine`
-    2. `fastapi`
-    3. `celery`
-    4. `redis`
-    5. `pydantic`
+    1. mongoengine
+    2. fastapi
+    3. celery
+    4. redis
+    5. pydantic
 
 ## DB
-    * Utilizes MongoDB for `docker-compose`
+    * Utilizes MongoDB for docker-compose
 
 ## About the project
     1. You can upload dataset file/files via the API.
